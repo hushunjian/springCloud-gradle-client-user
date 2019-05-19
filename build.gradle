@@ -70,6 +70,7 @@ dependencies {
 
     // 数据库连接,mybatis
     compile("mysql:mysql-connector-java")
+    compile("org.mybatis.generator:mybatis-generator-core:${mybatisGeneratorCoreVersion}")
     mybatisGenerator("org.mybatis.generator:mybatis-generator-core:${mybatisGeneratorCoreVersion}")
     mybatisGenerator("mysql:mysql-connector-java:${mysqlConnectorJavaVersion}")
 

@@ -28,6 +28,7 @@
         </javaClientGenerator>
 
         <table tableName="hello" domainObjectName="Hello"/>
+        <table tableName="hsj_user" domainObjectName="User"/>
 
     </context>
 </generatorConfiguration>

@@ -27,8 +27,9 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="hello" domainObjectName="Hello"/>
-        <table tableName="hsj_user" domainObjectName="User"/>
+        <table tableName="hello" domainObjectName = "Hello"/>
+        <table tableName="hsj_user" domainObjectName = "User"/>
+        <table tableName="hsj_tree" domainObjectName = "Tree"/>
 
     </context>
 </generatorConfiguration>

@@ -1,4 +1,4 @@
-package com.hushunjian.springcloud.client.user.configuration.request.tree;
+package com.hushunjian.springcloud.client.user.request.tree;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

@@ -32,4 +32,18 @@ public class TreeResponse {
 
     @ApiModelProperty(value = "展示序号")
     private String outLineNum;
+
+    public String getParentId(){
+        if (parentId == null){
+            return "";
+        }
+        return parentId;
+    }
+
+    public String getParentOutLineNum(){
+        if (outLineNum.contains(".")){
+            return outLineNum.substring(0, outLineNum.lastIndexOf("."));
+        }
+        return "";
+    }
 }

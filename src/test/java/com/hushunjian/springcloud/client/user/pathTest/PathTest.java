@@ -1,6 +1,6 @@
 package com.hushunjian.springcloud.client.user.pathTest;
 
-public class pathTest {
+public class PathTest {
 
     public static void main(String[] args) {
         String path = "0001.0001.0020";

@@ -1,5 +1,6 @@
 package com.hushunjian.springcloud.client.user.response;
 
+import com.hushunjian.springcloud.client.user.enumeration.SexEnum;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -23,4 +24,7 @@ public class UserResponse {
 
     @ApiModelProperty(value = "现居住地")
     private String address;
+
+    @ApiModelProperty(value = "性别(1:男性;2:女性)")
+    private SexEnum sex;
 }

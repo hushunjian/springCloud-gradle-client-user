@@ -33,7 +33,6 @@ public class UserController extends BaseController {
     @ApiOperation("添加用户")
     @PostMapping(value = "addUser")
     public Object addUser(@RequestBody AddUserReq req) {
-        SexEnum sex = req.getSex();
-        return success();
+        return success(req.getSex());
     }
 }

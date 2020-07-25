@@ -14,6 +14,18 @@ spring:
     url: jdbc:mysql://localhost:3306/macgradle?serverTimezne=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: 950420HSJ
+  redis:
+    database: 0
+    host: 192.168.2.134
+    port: 6379
+    password:
+    lettuce:
+      pool:
+        max-active: 200
+        max-wait: -1
+        max-idle: 10
+        min-idle: 0
+    timeout: 1000
 ribbon:
   eureka:
     enabled: true

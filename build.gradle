@@ -78,6 +78,7 @@ dependencies {
 
     // NoSQL-redis
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    compile ('org.apache.commons:commons-pool2:2.8.0')
 
     // springCloud-client
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'

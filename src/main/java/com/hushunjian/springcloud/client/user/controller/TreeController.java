@@ -19,68 +19,68 @@ import static com.hushunjian.springcloud.client.user.copier.TreeCopier.TREE_COPI
 @Validated
 @RequestMapping("tree")
 @RestController(value = "tree")
-public class TreeController extends BaseController {
+public class TreeController {
 
     @Autowired
     private TreeService treeService;
 
     @ApiOperation("添加子集")
     @PostMapping("addChildren")
-    public Object addChildren(@Validated @RequestBody AddChildrenReq req){
+    public Response addChildren(@Validated @RequestBody AddChildrenReq req){
         Tree parent = treeService.findById(req.getParentId());
         if (parent == null){
-            return filure();
+            return Response.failure();
         }
         treeService.addChildren(req.getNames(), parent);
-        return success();
+        return Response.success();
     }
 
     @GetMapping("addRoot")
     @ApiOperation("添加根节点")
-    public Object addRoot(@NotEmpty @RequestParam String name){
+    public Response addRoot(@NotEmpty @RequestParam String name){
         boolean exist = treeService.findByName(name);
         if (exist){
-            return filure();
+            return Response.failure();
         }
         treeService.addRoot(name);
-        return success();
+        return Response.success();
     }
 
     @GetMapping("findParentMaxOrderNumNode")
     @ApiOperation("获取父级下最大的order_num节点")
-    public Object findParentMaxOrderNumNode(@RequestParam(required = false) String parentId){
+    public Response findParentMaxOrderNumNode(@RequestParam(required = false) String parentId){
         Tree tree = treeService.findParentMaxOrderNumNode(parentId);
-        return success(tree);
+        return Response.success(tree);
     }
 
     @GetMapping("findAllByAppend")
     @ApiOperation("获取所有的树节点")
-    public Object findAllByAppend(){
+    public Response findAllByAppend(){
         List<Tree> trees = treeService.findAll();
         List<TreeResponse> response = TREE_COPIER.toTreeResponses(trees);
         OutLineNumUtils.appendOutLineNum(response);
         response.sort(new OutLineNumComparator());
-        return success(response);
+        return Response.success(response);
     }
 
     @GetMapping("findAllByPath")
     @ApiOperation("获取所有的树节点")
-    public Object findAllByPath(){
+    public Response findAllByPath(){
         List<Tree> trees = treeService.findAll();
         List<TreeResponse> response = TREE_COPIER.toTreeResponses(trees);
         OutLineNumUtils.pathToOutLineNum(response);
         response.sort(new OutLineNumComparator());
-        return success(response);
+        return Response.success(response);
     }
 
     @GetMapping("findAllByGenerate")
     @ApiOperation("获取所有的树节点")
-    public Object findAllByGenerate(){
+    public Response findAllByGenerate(){
         List<Tree> trees = treeService.findAll();
         List<TreeResponse> response = TREE_COPIER.toTreeResponses(trees);
         OutLineNumUtils.generateOutLineNum(response);
         response.sort(new OutLineNumComparator());
-        return success(response);
+        return Response.success(response);
     }
 
 }

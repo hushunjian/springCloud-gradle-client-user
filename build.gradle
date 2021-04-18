@@ -19,6 +19,15 @@ plugins {
 
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'com.arenagod.gradle.MybatisGenerator'
+apply plugin: 'idea'
+
+idea{
+    module{
+        inheritOutputDirs = false
+        outputDir = compileJava.destinationDir
+        testOutputDir = compileJava.destinationDir
+    }
+}
 
 group = 'com.hushunjian.springcloud.client'
 version = '0.0.1-SNAPSHOT'

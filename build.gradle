@@ -92,6 +92,12 @@ dependencies {
     // springCloud-client
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // lang3
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+
+    // google guava
+    implementation group: 'com.google.guava', name: 'guava', version: '30.1.1-jre'
 }
 
 dependencyManagement {

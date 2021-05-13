@@ -23,37 +23,26 @@ public class CalUtils {
          }*/
         String[] split = strReplace.split("'");
         Map<Integer, Double> indexValueMap = Maps.newHashMap();
-        List<String> numOperators = Lists.newArrayList();
-        numOperators.add(split[0]);
+        List<Double> nums = Lists.newArrayList();
+        List<String> operators = Lists.newArrayList();
         for (int i = 1; i <= split.length - 1; ) {
             if (StringUtils.equalsAny(split[i], "*", "/")) {
                 Double num1 = indexValueMap.get(i - 1);
                 if (num1 == null) {
                     num1 = Double.parseDouble(split[i - 1]);
                 }
-                Double num2 = Double.parseDouble(split[i + 1]);
-                String operator = split[i];
-                Double value = cal(num1, num2, operator);
+                Double value = cal(num1, Double.parseDouble(split[i + 1]), split[i]);
                 indexValueMap.put(i + 1, value);
-                numOperators.set(numOperators.size() - 1, value.toString());
+                nums.set(nums.size() - 1, value);
             } else {
-                numOperators.add(split[i]);
-                numOperators.add(split[i + 1]);
+                operators.add(split[i]);
+                nums.add(Double.parseDouble(split[i + 1]));
             }
             i+=2;
         }
-        List<String> nums = Lists.newArrayList();
-        List<String> operators = Lists.newArrayList();
-        for (int i = 0; i < numOperators.size(); i++) {
-            if (i % 2 == 0) {
-                nums.add(numOperators.get(i));
-            } else {
-                operators.add(numOperators.get(i));
-            }
-        }
-        Double result = Double.parseDouble(nums.get(0));
+        Double result = Double.parseDouble(split[0]);
         for (int i = 0; i < operators.size(); i++) {
-            result = cal(result, Double.parseDouble(nums.get(i + 1)), operators.get(i));
+            result = cal(result, nums.get(i), operators.get(i));
         }
         System.out.println(result);
     }

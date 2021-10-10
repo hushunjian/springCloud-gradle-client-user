@@ -1,5 +1,13 @@
 package com.hushunjian.springcloud.client.user.enumeration;
 
+import lombok.Getter;
+
+import java.util.Map;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toMap;
+
+
 public enum Operation {
 
     PLUS("+") {
@@ -27,6 +35,7 @@ public enum Operation {
         }
     };
 
+    @Getter
     private final String symbol;
 
     Operation(String symbol) {
@@ -39,6 +48,8 @@ public enum Operation {
     }
 
     public abstract double apply(double x, double y);
+
+    public static final Map<String, Operation> operation_map = Stream.of(values()).collect(toMap(Operation::getSymbol, op -> op));
 
     public static void main(String[] args) {
         double x = 2;
